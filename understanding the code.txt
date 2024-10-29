@@ -1,0 +1,76 @@
+This code is a Flask web application designed to allow users to upload PDF files and extract both text and images from them. It uses PyMuPDF (`fitz`) to handle the extraction process. Below is a breakdown of how the code works:
+
+1. Setup and Configuration:
+   - `app = Flask(__name__)`: Initializes the Flask web application.
+   - `UPLOAD_FOLDER = 'uploads'` and `EXTRACT_FOLDER = 'output'`: Define directories for storing uploaded PDF files and the extracted content (text and images). These directories are created if they don't exist.
+   - `app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER`: Configures the upload folder in the Flask app.
+
+ 2. Function: `extract_text_and_images(pdf_path, extract_dir)`
+   This function extracts text and images from a given PDF file and saves them in separate folders.
+
+   - `fitz.open(pdf_path)`: Opens the PDF file using PyMuPDF.
+   - `text_dir` and `images_dir`: Directories to store extracted text and images, respectively. They are created within the specified `extract_dir`.
+   - For each page in the PDF (`for page_num in range(len(doc))`):
+     - Text extraction: The text from the page is extracted and saved in a `.txt` file.
+     - Image extraction: Each image on the page is extracted, and the images are saved in the corresponding image directory.
+   - The function returns the directories where the extracted text and images are stored.
+
+ 3. Flask Routes:
+   - `@app.route('/')`:  
+     The home page that renders `index.html`, which presumably contains the form to upload a PDF file.
+
+   - `@app.route('/upload', methods=['POST'])`:  
+     Handles the file upload:
+     - Checks if a file is present in the request.
+     - Uses `secure_filename` to safely save the uploaded file.
+     - Extracts the text and images from the uploaded PDF using `extract_text_and_images` and stores them in a timestamped folder.
+     - Redirects to a page displaying the extracted content.
+
+   - `@app.route('/extracted')`:  
+     Displays the extracted text and images:
+     - Retrieves the directories where the extracted text and images are stored via query parameters (`text_dir`, `images_dir`).
+     - Reads the text files and stores their content in the `texts` list.
+     - Collects the names of extracted images in the `images` list.
+     - Renders `extracted.html` to display the text and images.
+
+   - `@app.route('/output/<path:filename>')`:  
+     Serves the extracted images to the user:
+     - Allows users to download or view the extracted images from the `output` directory.
+
+ 4. How it Works:
+   - Uploading a PDF:  
+     Users can upload a PDF file through the form on the homepage (`index.html`).
+   
+   - Extracting Content:  
+     Once uploaded, the `upload_file` function processes the PDF, extracts the text and images using `extract_text_and_images`, and stores the output in the `output/extraction_<timestamp>` folder.
+
+   - Displaying Extracted Content:  
+     After the extraction, the user is redirected to a page that displays the extracted text and images, which are presented in `extracted.html`.
+
+ 5. Serving Files:
+   The app can serve the extracted images using the `serve_file` function via the `/output/<path:filename>` route. This ensures that images are accessible via URLs.
+
+ Additional Notes:
+   - File Safety:  
+     The `secure_filename` function from `werkzeug.utils` ensures that file names are safely handled to prevent any issues like overwriting or path traversal attacks.
+   
+   - Dynamic Directory Creation:  
+     `os.makedirs(UPLOAD_FOLDER, exist_ok=True)` and `os.makedirs(EXTRACT_FOLDER, exist_ok=True)` ensure that the required directories are always created if they don't exist already.
+
+ Key Dependencies:
+   - `fitz (PyMuPDF)`: To handle PDF operations such as extracting text and images.
+   - `Flask`: To create the web application and handle requests and responses.
+   - `werkzeug.utils.secure_filename`: To handle file naming securely.
+
+
+PyMuPDF is a Python binding for MuPDF, a lightweight and high-performance PDF, XPS, and eBook viewer. It allows developers to work with PDF and other document formats in Python, enabling tasks such as:
+
+Extracting text and images from PDF documents.
+
+Manipulating PDFs (merging, splitting, rotating pages).
+
+Rendering PDF pages as images.
+
+Searching and highlighting text within PDFs.
+
+Adding annotations or other modifications to PDFs.

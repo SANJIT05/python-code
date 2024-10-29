@@ -1,0 +1,32 @@
+Michael LaFosse’s Origami Butterfl ies 
+22
+The Base Architecture 
+No matter how simple or complex any of the butterfl ies from our system 
+may be, they each display many of the distinguishing features of their liv-
+ing counterparts: head, thorax, abdomen, forewings, and hindwings. 
+1. (A) Valley-fold in half, long edge to long 
+edge. Unfold. (B) Valley-fold short edge to 
+short edge. 
+7. The squash fold in progress. Press ﬂ at.
+4. The squash fold almost complete. Press 
+ﬂ at.
+10. The squash fold in progress. Press ﬂ at.
+2. Squash-fold the right half. Look ahead at 
+steps 3–5 to understand the process.
+8. Valley-fold the bottom corner to the top of 
+the split. Unfold.
+9. Squash-folding the right and left halves to 
+form the wings.
+5. Your paper should look like this. Turn over, 
+left to right.
+11. The “LaFosse Butterﬂ y Base.”
+3. The squash fold in progress.
+6. Squash-fold the right half.
+You will soon be defi ning all of these 
+exciting features, but we need to begin 
+with the foundation of the basic archi-
+tecture that Michael developed in 1978 
+with his Butterfl y for Alice Gray (page 
+34). Find a piece of letter paper and 
+fold along with us as shown in the next 
+few diagrams.

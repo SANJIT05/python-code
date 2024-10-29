@@ -1,0 +1,16 @@
+file explorer
+open 'python code' and hit cmd in address bar
+
+in terminal type 'code .' and hit enter
+
+then it will open vs code
+
+run  'cd flaskapp' in vs code
+
+type 'python app.py'
+
+
+
+or else
+
+type 'python app.py' in file explorer in flaskapp(cmd)

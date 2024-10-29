@@ -1,0 +1,11 @@
+Forms a symmetrical triangle
+with at least two congruent edges.
+Forms an asymmetrical triangle
+with no congruent edges.
+Squash Fold
+Diagram
+Squash Fold
+Completed
+Origami Symbols Key
+21
+21
